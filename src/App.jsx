@@ -1,9 +1,11 @@
 import './App.css'
-import Home from './pages/index'
+import Home from './pages/Index'
 import { GlobalContext } from './context'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routers'
 
 function App() {
-  const value = true
+  // const value = true
   const user = {
     name: "setiawan"
   }
@@ -11,9 +13,9 @@ function App() {
   return (
     <div className='App'>
       {/*{value ? 'Benar' : 'Salah'} Conditional Rendering */}
-      {value && 'Benar'}
+      {/* {value && 'Benar'} */}
       <GlobalContext.Provider value={user}>
-        <Home />
+        <RouterProvider router={router} />
       </GlobalContext.Provider>
     </div>
   )
