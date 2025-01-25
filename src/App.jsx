@@ -1,5 +1,6 @@
 import './App.css'
 import Home from './pages/Index'
+
 import { GlobalContext } from './context'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routers'

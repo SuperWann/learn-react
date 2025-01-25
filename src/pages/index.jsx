@@ -4,10 +4,8 @@ import postsData from '../posts.json'
 import Search from '../components/Search'
 
 function Homepage() {
-
     const [posts, setPosts] = useState(postsData);
     const [countPosts, setCountPosts] = useState(postsData.length);
-    const [apiPosts, setApiPosts] = useState([]);
 
     const searchValue = (value) =>{
         const filterDataPost = postsData.filter((post) => 
@@ -16,12 +14,6 @@ function Homepage() {
         setPosts(filterDataPost)
         setCountPosts(filterDataPost.length) //Filter Data Post merupakan sebuah array, sehingga dapat menggunakan .length
     }
-
-    useEffect(() => { // useEffect digunakan untuk menjalankan kode tertentu ketika hal tertentu terjadi
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(json => setApiPosts(json))
-    }, []); //[posts] merupakan lifecycle componentDidUpdate, disini digunakan untuk menjalankan useEffect ketika "posts" terjadi perubahan
 
     useEffect(() => {
         console.log('ada data terbaru')
@@ -42,18 +34,6 @@ function Homepage() {
                 // <Article title={title} tags={tags} date={date}/> 
                 <Article {...props} key={index}/> //lebih singkat lagi
             ))}
-
-            <hr />
-
-            <h1>Consume API Posts</h1>
-            {apiPosts.map((item, index ) => {
-                return (
-                    <div key={index}>
-                        <h3>{item.title}</h3>
-                        <small>{item.body}</small>
-                    </div>
-                )
-            })}
         </>
     )
 }
