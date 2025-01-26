@@ -1,11 +1,13 @@
-import {Link, Outlet} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
+
+import "../styles/index.css"
 
 function RootLayout() {
     return (
         <>
-            <Link to="/">Home </Link> |
-            <Link to="/blogs"> Blog </Link> |
-            <Link to="/about"> About </Link> 
+            <NavLink className={({isActive}) => isActive ? "active" : ""} style={{marginRight: "5px"}} to="/">Home</NavLink> |
+            <NavLink className={({isActive}) => isActive ? "active" : ""} style={{marginRight: "5px", marginLeft: "5px"}} to="/blogs">Blog</NavLink> |
+            <NavLink className={({isActive}) => isActive ? "active" : ""} style={{marginLeft: "5px"}} to="/about">About</NavLink> 
             <Outlet /> {/* semua halaman children masuk kedalam outlet */}
         </>
     )
