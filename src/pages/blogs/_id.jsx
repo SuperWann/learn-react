@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 function SinglePost() {
-    const params = useParams();
-    const [post, setPost] = useState('');
 
-    useEffect(() => { // useEffect digunakan untuk menjalankan kode tertentu ketika hal tertentu terjadi
-        fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-            .then(response => response.json())
-            .then(json => setPost(json))
-    }, []);
+    //SEBELUM MENGGUNAKAN REACT ROUTER DATA LOADER
+
+    // const params = useParams();
+    // const [post, setPost] = useState('');
+
+    // useEffect(() => { // useEffect digunakan untuk menjalankan kode tertentu ketika hal tertentu terjadi
+    //     fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+    //         .then(response => response.json())
+    //         .then(json => setPost(json))
+    // }, []);
+
+
+    //SETELAH MENGGUNAKAN REACT ROUTER DATA LOADER
+
+    const post = useLoaderData();
 
     return (
         <>

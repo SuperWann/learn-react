@@ -1,14 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 function Blog () {
-    const [apiPosts, setApiPosts] = useState([]);
+
+    //SEBELUM MENGGUNAKAN REACT ROUTER DATA LOADER
     
-    useEffect(() => { // useEffect digunakan untuk menjalankan kode tertentu ketika hal tertentu terjadi
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(json => setApiPosts(json))
-    }, []); //[posts] merupakan lifecycle componentDidUpdate, disini digunakan untuk menjalankan useEffect ketika "posts" terjadi perubahan
+    // const [apiPosts, setApiPosts] = useState([]);
+    
+    // useEffect(() => { // useEffect digunakan untuk menjalankan kode tertentu ketika hal tertentu terjadi
+    //     fetch('https://jsonplaceholder.typicode.com/posts')
+    //         .then(response => response.json())
+    //         .then(json => setApiPosts(json))
+    // }, []); //[posts] merupakan lifecycle componentDidUpdate, disini digunakan untuk menjalankan useEffect ketika "posts" terjadi perubahan
+    
+
+    //SETELAH MENGGUNAKAN REACT ROUTER DATA LOADER
+
+    const apiPosts = useLoaderData();
 
     return(
         <>
